@@ -1,0 +1,1 @@
+export const changePageTitle = (title: string) => document.title = `Company Stock | ${title}`
