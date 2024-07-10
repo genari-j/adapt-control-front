@@ -1,4 +1,3 @@
-// import { useGetProducts } from '~/infra/cache/queries'
 import { pageTitle } from '~/utils'
 
 import { Title } from '~/components'
@@ -8,7 +7,6 @@ import { Container, Content } from './styles'
 
 export const Graphics = () => {
   pageTitle('Dashboard')
-  // const { data } = useGetProducts()
 
   return (
     <Container>

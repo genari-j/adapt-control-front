@@ -1,5 +1,3 @@
-// import { useInfiniteQuery } from 'react-query'
-
 import { useRouting, useProductDetails, useProductEditing } from '~/hooks'
 import { useGetCategories } from '~/api/cache/queries'
 
@@ -15,7 +13,6 @@ import {
   ProductFileGroup,
   ButtonsBox
 } from './styles'
-// import { getAllCategories } from '~/api/http/requests'
 
 export const EditingProducts = () => {
   pageTitle('Edição Produto')

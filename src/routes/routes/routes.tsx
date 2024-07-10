@@ -1,4 +1,3 @@
-// createBrowserRouter
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { PrivateRoutes } from '~/routes'

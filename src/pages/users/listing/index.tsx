@@ -32,7 +32,7 @@ export const ListingUsers = () => {
         <Title content='Usuários' />
 
         <NewUserBox>
-          <Link to={`/usuarios/cadastrar`}>+ Novo</Link>
+          <Link to='/usuarios/cadastrar'>+ Novo</Link>
         </NewUserBox>
 
         <TableBox>
