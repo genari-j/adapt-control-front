@@ -1,0 +1,45 @@
+import { Dispatch, SetStateAction } from 'react'
+
+import { Title } from '~/components'
+
+import {
+  ArrowDLeft,
+  ArrowDRight,
+  ArrowLeft,
+  ArrowRight
+} from '~/assets'
+
+interface PaginationProps {
+  totalCountPage: number
+  totalCount: number
+  page: number
+  setPage: Dispatch<SetStateAction<number>>
+  dataName: string
+}
+
+import { Container, ButtonsBox } from './styles'
+
+export const Pagination = ({ dataName, totalCountPage, totalCount, page, setPage }: PaginationProps) => {
+  const handleNextPage = () => { if (totalCountPage! > page) { setPage(page + 1) } }
+  const handlePreviousPage = () => { if (page > 1) { setPage(page - 1) } }
+  const handleLastPage = () => setPage(totalCountPage!)
+  const handleFirstPage = () => setPage(1)
+
+  return (
+    <Container>
+      <Title
+        content={`Total de ${dataName}: ${totalCount < 10 ? '0' + totalCount : totalCount}`} size='1.1rem'
+      />
+
+      <ButtonsBox>
+        <button onClick={handleFirstPage}> <ArrowDLeft /> </button>
+        <button onClick={handlePreviousPage}> <ArrowLeft /> </button>
+
+        <p>{page} de {totalCountPage}</p>
+
+        <button onClick={handleNextPage} disabled={totalCountPage === page}> <ArrowRight /> </button>
+        <button onClick={handleLastPage} disabled={totalCountPage === page}> <ArrowDRight /> </button>
+      </ButtonsBox>
+    </Container>
+  )
+}

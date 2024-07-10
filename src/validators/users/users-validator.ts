@@ -4,7 +4,7 @@ export const validateSignInSchema = z.object({
   user_code:
     z.string()
     .min(1, 'Matrícula inválida')
-    .refine((val) => !Number.isNaN(parseInt(val))),
+    .transform(code => Number(code)),
   password:
     z.string()
     .min(1, 'Senha inválida')
@@ -18,7 +18,7 @@ export const validateSignUpSchema = z.object({
   user_code:
     z.string()
     .min(1, 'Matrícula inválida')
-    .refine((val) => !Number.isNaN(parseInt(val))),
+    .transform(code => Number(code)),
   email:
     z.string()
     .min(1, 'E-mail inválido')

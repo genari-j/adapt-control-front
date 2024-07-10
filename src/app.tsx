@@ -1,18 +1,25 @@
-import { QueryClientProvider } from 'react-query'
+import { Fragment } from 'react'
 import { Toaster } from 'react-hot-toast'
 
-import { AppRoutes } from '~/main/routes'
-import { client } from '~/main/config'
+import { client } from '~/api/config'
+import { QueryClientProvider } from 'react-query'
 
-import { GlobalStyles } from '~/presentation/themes'
+import { AppRoutes } from '~/routes'
 
-export function App() {
+import { ThemeProvider } from 'styled-components'
+import { GlobalStyles, defaultTheme } from '~/themes'
+
+export const App = () => {
   return (
-    <QueryClientProvider client={client}>
-      <AppRoutes />
-      <GlobalStyles />
+    <Fragment>
+      <ThemeProvider theme={defaultTheme}>
+        <GlobalStyles />
+        <Toaster position='bottom-right' />
 
-      <Toaster position='bottom-right' />
-    </QueryClientProvider>
+        <QueryClientProvider client={client}>
+          <AppRoutes />
+        </QueryClientProvider>
+      </ThemeProvider>
+    </Fragment>
   )
 }
