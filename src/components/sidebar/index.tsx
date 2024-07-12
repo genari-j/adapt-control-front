@@ -2,17 +2,9 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useSession, useLogout } from '~/hooks'
+import { sidebarElements } from '~/utils'
 
-import {
-  HomeIcon,
-  Users,
-  Products,
-  Categories,
-  Sales,
-  LineChart,
-  MdLogout,
-  ArrowBack
-} from '~/assets'
+import { MdLogout, ArrowBack } from '~/assets'
 
 import { Container, SidebarElements, LogoutBox } from './styles'
 
@@ -22,15 +14,6 @@ export const Sidebar = () => {
 
   const [controlSidebar, setControlSidebar] = useState(false)
   const handleControlSidebar = () => setControlSidebar(!controlSidebar)
-
-  const globalSidebarElements = [
-    { id: 1, img: HomeIcon, url: '/', title: 'Início' },
-    { id: 2, img: Users, url: '/usuarios', title: 'Usuários' },
-    { id: 3, img: Products, url: '/produtos', title: 'Produtos' },
-    { id: 4, img: Categories, url: '/categorias', title: 'Categorias' },
-    { id: 5, img: Sales, url: '/vendas', title: 'Vendas' },
-    { id: 6, img: LineChart, url: '/graficos', title: 'Gráficos' }
-  ]
 
   return (
     <Container className={controlSidebar ? 'hiddenSidebar' : ''}>
@@ -42,7 +25,7 @@ export const Sidebar = () => {
       </button>
 
       <SidebarElements>
-        {globalSidebarElements.map((anchor) => {
+        {sidebarElements.map((anchor) => {
           return (
             <Link to={anchor.url} key={anchor.id}>
               <i> <img src={anchor.img} alt={anchor.title} title={anchor.title} /> </i>
