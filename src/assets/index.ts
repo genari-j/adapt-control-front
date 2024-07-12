@@ -16,6 +16,7 @@ import {
 } from 'react-icons/md'
 import { RiCloseCircleLine } from 'react-icons/ri'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import { MdOutlineArrowBack as ArrowBack } from "react-icons/md";
 
 // IMGS
 import LogoImg from './images/stock.png'
@@ -38,6 +39,7 @@ export {
   RiCloseCircleLine,
   AiOutlineEye,
   AiOutlineEyeInvisible,
+  ArrowBack,
 
   LogoImg,
   StockImg,

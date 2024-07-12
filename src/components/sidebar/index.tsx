@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useSession, useLogout } from '~/hooks'
@@ -9,7 +10,8 @@ import {
   Categories,
   Sales,
   LineChart,
-  MdLogout
+  MdLogout,
+  ArrowBack
 } from '~/assets'
 
 import { Container, SidebarElements, LogoutBox } from './styles'
@@ -17,6 +19,9 @@ import { Container, SidebarElements, LogoutBox } from './styles'
 export const Sidebar = () => {
   const { userInfos } = useSession()
   const { handleLogout } = useLogout()
+
+  const [controlSidebar, setControlSidebar] = useState(false)
+  const handleControlSidebar = () => setControlSidebar(!controlSidebar)
 
   const globalSidebarElements = [
     { id: 1, img: HomeIcon, url: '/', title: 'Início' },
@@ -28,17 +33,19 @@ export const Sidebar = () => {
   ]
 
   return (
-    <Container>
+    <Container className={controlSidebar ? 'hiddenSidebar' : ''}>
+      <button
+        onClick={handleControlSidebar}
+        className={controlSidebar ? 'rotateBackArrow' : ''}
+      >
+        <ArrowBack />
+      </button>
+
       <SidebarElements>
         {globalSidebarElements.map((anchor) => {
           return (
-            <Link
-              to={anchor.url}
-              key={anchor.id}
-            >
-              <i>
-                <img src={anchor.img} alt={anchor.title} title={anchor.title} />
-              </i>
+            <Link to={anchor.url} key={anchor.id}>
+              <i> <img src={anchor.img} alt={anchor.title} title={anchor.title} /> </i>
               {anchor.title}
             </Link>
           )
