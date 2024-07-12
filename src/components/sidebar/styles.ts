@@ -3,7 +3,7 @@ import { styled } from 'styled-components'
 export const Container = styled.aside`
   width: 100%;
   max-width: 240px;
-  min-height: 100vh;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@ export const Container = styled.aside`
 
   transition: .3s ease;
 
-  padding: 2rem 0;
+  padding: 0.5rem 0;
 
   background: ${props => props.theme['black9']};
 
@@ -52,7 +52,7 @@ export const Container = styled.aside`
 
 export const SidebarElements = styled.div`
   width: 100%;
-  height: calc(100vh - 130px);
+  flex: 1;
   overflow-y: auto;
 
   display: flex;
@@ -95,7 +95,32 @@ export const SidebarElements = styled.div`
 export const LogoutBox = styled.div`
   width: 100%;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
   margin-top: auto;
+  padding: 1rem 0.5rem 0.5rem 0.5rem;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    a, span {
+      font-size: 0.9rem;
+    }
+
+    a {
+      font-weight: 600;
+      transition: .3s ease;
+
+      &:hover {
+        transform: translateX(-2px);
+      }
+    }
+  }
 
   button {
     display: flex;
@@ -105,7 +130,7 @@ export const LogoutBox = styled.div`
     transition: .3s ease;
 
     font-size: 1.1rem;
-    padding: 0.1rem 0.5rem;
+    padding: 0.5rem 0.3rem;
     border-radius: 0.3rem;
 
     color: ${props => props.theme['black9']};

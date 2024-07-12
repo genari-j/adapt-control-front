@@ -53,6 +53,7 @@ export const Sidebar = () => {
       </SidebarElements>
 
       <LogoutBox>
+        <button onClick={handleLogout}><i><MdLogout /></i></button>
         <div>
           {userInfos?.name
             ? <Link to={`/perfil/${userInfos?.sub}`}> {userInfos.name.split(' ')[0]} </Link>
@@ -60,7 +61,6 @@ export const Sidebar = () => {
           }
           <span>{userInfos?.departments.name}</span>
         </div>
-        <button onClick={handleLogout}><i><MdLogout /></i> Sair</button>
       </LogoutBox>
     </Container>
   )
