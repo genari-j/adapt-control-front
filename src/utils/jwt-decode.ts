@@ -1,6 +1,6 @@
 import { jwtDecode } from 'jwt-decode'
 
-interface UserProps {
+interface User {
   sub: number
   name: string | null
   user_code: string
@@ -28,7 +28,7 @@ interface UserProps {
   updated_at: string
 }
 
-export const decodeAccessToken = (token: string): UserProps | undefined => {
+export const decodeAccessToken = (token: string): User | undefined => {
   try {
     return jwtDecode(token)
   } catch (error) {

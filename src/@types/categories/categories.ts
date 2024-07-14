@@ -15,7 +15,7 @@ export interface Category {
 
 export interface CategoriesProps  {
   data: Category[]
-  error: Boolean
+  error: boolean
   limit: number
   currentPage: number
   pages: number

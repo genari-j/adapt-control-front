@@ -1,10 +1,11 @@
 import { Fragment } from 'react'
+import { RouterProvider } from 'react-router-dom'
+import { QueryClientProvider } from 'react-query'
 import { Toaster } from 'react-hot-toast'
 
 import { client } from '~/api/config'
-import { QueryClientProvider } from 'react-query'
 
-import { AppRoutes } from '~/routes'
+import { router } from '~/routes'
 
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyles, defaultTheme } from '~/themes'
@@ -17,7 +18,7 @@ export const App = () => {
         <Toaster position='bottom-right' />
 
         <QueryClientProvider client={client}>
-          <AppRoutes />
+          <RouterProvider router={router} />
         </QueryClientProvider>
       </ThemeProvider>
     </Fragment>
