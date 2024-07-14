@@ -1,12 +1,12 @@
+import { AxiosError } from 'axios'
 import { useMutation } from 'react-query'
 import { NavigateFunction } from 'react-router-dom'
-import { toast } from 'react-hot-toast'
 
 import { api } from '~/api/config'
 import { auth } from '~/api/http/requests'
 import { type SignInProps } from '~/@types'
 
-import { config } from '~/utils'
+import { config, responseStatus } from '~/utils'
 
 export const useSignInMutation = (navigate: NavigateFunction) =>
   useMutation(async (data: SignInProps) => {
@@ -20,13 +20,5 @@ export const useSignInMutation = (navigate: NavigateFunction) =>
 
       navigate('/')
     },
-    onError: (error: any) => {
-      if (error.response.status === 500) {
-        toast.error('Houve um erro ao tentar conexão com o servidor.')
-      } else if (error.response.status === 401) {
-        toast.error('Não autorizado.')
-      } else if (error.response.status === 400) {
-        toast.error('Não autorizado.')
-      }
-    }
+    onError: (error: AxiosError) => responseStatus(error)
   })
