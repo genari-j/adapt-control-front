@@ -13,11 +13,11 @@ import {
   ButtonsBox
 } from './styles'
 
-interface ModalProps {
+interface CategoryCreateProps {
   handleChangeModalVisibility: () => void
 }
 
-export const Modal = ({ handleChangeModalVisibility }: ModalProps) => {
+export const CategoryCreate = ({ handleChangeModalVisibility }: CategoryCreateProps) => {
   const { creatingCategory, onSubmit, handleSubmit, register, formState: { errors } } = useCategoryCreating()
 
   return (

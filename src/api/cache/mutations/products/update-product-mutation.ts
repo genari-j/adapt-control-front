@@ -1,20 +1,28 @@
+import { AxiosError } from 'axios'
 import { NavigateFunction } from 'react-router-dom'
 import { useMutation } from 'react-query'
 import { toast } from 'react-hot-toast'
 
 import { updateProductById } from '~/api/http/requests'
+
+import { responseStatus } from '~/utils'
 import { type UpdateProductProps } from '~/@types'
 
 export const useUpdateProductMutation = (id: number, navigate: NavigateFunction) =>
   useMutation(async (data: UpdateProductProps) => {
-    const response = await updateProductById.updateById(id, {
-      name: data.name,
-      description: data.description,
-      quantity: data.quantity,
-      price: data.price,
-      category_id: data.category_id,
-      avatar: data.avatar,
-    })
+    const formData = new FormData()
+
+    formData.append('name', data.name)
+    formData.append('description', data.description)
+    formData.append('quantity', data.quantity.toString())
+    formData.append('price', data.price.toString())
+    formData.append('category_id', data.category_id.toString())
+
+    if (data.avatar instanceof File) {
+      formData.append('avatar', data.avatar)
+    }
+
+    const response = await updateProductById.updateById(id, formData)
     return response
   }, {
     onSuccess: () => {
@@ -22,13 +30,5 @@ export const useUpdateProductMutation = (id: number, navigate: NavigateFunction)
       const changeNavigation = () => navigate('/produtos')
       setTimeout(changeNavigation, 2500)
     },
-    onError: (error: any) => {
-      if (error.response.status === 500) {
-        toast.error('Ops, houve um erro ao tentar conexão com o servidor.')
-      } else if (error.response.status === 400) {
-        toast.error('Não autorizado.')
-      } else if (error.response.status === 401) {
-        toast.error('Não autorizado.')
-      }
-    }
+    onError: (error: AxiosError) => responseStatus(error)
   })

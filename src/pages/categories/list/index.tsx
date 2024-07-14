@@ -20,7 +20,7 @@ import {
   Pagination
 } from '~/components'
 
-import { Modal } from '~/pages'
+import { CategoryCreate } from '~/pages'
 
 import {
   Container,
@@ -30,7 +30,7 @@ import {
   LoadingBox
 } from './styles'
 
-export const ListingCategories = () => {
+export const CategoryList = () => {
   pageTitle('Categorias')
   const { showModal, handleChangeModalVisibility } = useModalControl()
 
@@ -47,7 +47,7 @@ export const ListingCategories = () => {
           <Link to='' onClick={handleChangeModalVisibility}>+ Nova</Link>
         </NewCategoryBox>
 
-        {showModal && <Modal handleChangeModalVisibility={handleChangeModalVisibility} />}
+        {showModal && <CategoryCreate handleChangeModalVisibility={handleChangeModalVisibility} />}
 
         <TableBox>
           {categories.isLoading

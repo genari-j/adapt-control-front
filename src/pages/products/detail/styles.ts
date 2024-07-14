@@ -5,13 +5,17 @@ export const Container = styled.div`
 
   display: flex;
   justify-content: center;
+
+  padding: 3rem 0;
 `
 
 export const Content = styled.div`
   width: 100%;
-  max-width: 920px;
+  max-width: 600px;
 
-  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `
 
 export const ProductsGrid = styled.div`
@@ -19,7 +23,6 @@ export const ProductsGrid = styled.div`
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
 `
 
 export const ProductGroup = styled.div`

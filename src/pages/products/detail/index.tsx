@@ -6,7 +6,7 @@ import { Title, Label, Bounce, Button } from '~/components'
 import { Container, Content, ProductsGrid, ProductGroup, ButtonsBox } from './styles'
 import { pageTitle } from '~/utils'
 
-export const ProductDetails = () => {
+export const ProductDetail = () => {
   pageTitle('Detalhamento Produto')
   const { handleGoToProducts, handleGoToEditProduct } = useRouting()
 

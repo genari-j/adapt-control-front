@@ -14,7 +14,7 @@ import {
   ButtonsBox
 } from './styles'
 
-export const EditingProducts = () => {
+export const ProductEdit = () => {
   pageTitle('Edição Produto')
   const { handleGoToProductDetail } = useRouting()
 

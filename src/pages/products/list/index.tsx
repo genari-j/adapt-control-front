@@ -20,7 +20,7 @@ import {
 
 import { Container, Content, NewProductBox, TableBox, LoadingBox } from './styles'
 
-export const ListingProducts = () => {
+export const ProductList = () => {
   pageTitle('Produtos')
 
   const [page, setPage] = useState(1)

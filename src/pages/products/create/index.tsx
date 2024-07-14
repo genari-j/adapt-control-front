@@ -14,7 +14,7 @@ import {
   ButtonBox
 } from './styles'
 
-export const CreatingProducts = () => {
+export const ProductCreate = () => {
   pageTitle('Criação de Produtos')
   const { creatingProduct, onSubmit, handleSubmit, register, formState: { errors } } = useProductCreating()
 

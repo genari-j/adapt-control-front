@@ -19,7 +19,7 @@ import {
 
 import { Container, Content, NewUserBox, TableBox, LoadingBox } from './styles'
 
-export const ListingUsers = () => {
+export const UserList = () => {
   pageTitle('Usuários')
 
   const [page, setPage] = useState(1)

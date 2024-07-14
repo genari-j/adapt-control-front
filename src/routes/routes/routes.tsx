@@ -22,14 +22,14 @@ export const router = createBrowserRouter([
           children: [
             { path: '/usuarios/cadastrar', element: <Pages.SignUp /> },
             { path: '/', element: <Pages.Home /> },
-            { path: '/categorias', element: <Pages.ListingCategories /> },
-            { path: '/produtos/cadastrar', element: <Pages.CreatingProducts /> },
-            { path: '/produtos', element: <Pages.ListingProducts /> },
-            { path: '/produtos/:id', element: <Pages.ProductDetails /> },
-            { path: '/produtos/:id/editar', element: <Pages.EditingProducts /> },
+            { path: '/categorias', element: <Pages.CategoryList /> },
+            { path: '/produtos/cadastrar', element: <Pages.ProductCreate /> },
+            { path: '/produtos', element: <Pages.ProductList /> },
+            { path: '/produtos/:id', element: <Pages.ProductDetail /> },
+            { path: '/produtos/:id/editar', element: <Pages.ProductEdit /> },
             { path: '/graficos', element: <Pages.Graphics /> },
             { path: '/perfil/:sub', element: <Pages.Profile /> },
-            { path: '/usuarios', element: <Pages.ListingUsers /> }
+            { path: '/usuarios', element: <Pages.UserList /> }
           ],
         }]
       }
