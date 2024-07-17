@@ -2,11 +2,10 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useSignIn } from '~/hooks'
-
 import { pageTitle } from '~/utils'
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 
 import { Title, Label, TextField, FormHelper, Bounce, Button } from '~/components'
+import { AiOutlineEye, AiOutlineEyeInvisible } from '~/assets'
 
 import {
   Container,
@@ -60,7 +59,7 @@ export const SignIn = () => {
         />
 
         <ForgotPasswordBox>
-          <p>Esqueceu sua senha? <Link to={`/solicitacao/reset-de-senha`}>Clique aqui</Link></p>
+          <p>Esqueceu sua senha? <Link to='/recuperacao-de-senha'>Clique aqui</Link></p>
         </ForgotPasswordBox>
       </Form>
     </Container>

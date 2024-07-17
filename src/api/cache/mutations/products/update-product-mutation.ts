@@ -10,19 +10,15 @@ import { type UpdateProductProps } from '~/@types'
 
 export const useUpdateProductMutation = (id: number, navigate: NavigateFunction) =>
   useMutation(async (data: UpdateProductProps) => {
-    const formData = new FormData()
-
-    formData.append('name', data.name)
-    formData.append('description', data.description)
-    formData.append('quantity', data.quantity.toString())
-    formData.append('price', data.price.toString())
-    formData.append('category_id', data.category_id.toString())
-
-    if (data.avatar instanceof File) {
-      formData.append('avatar', data.avatar)
-    }
-
-    const response = await updateProductById.updateById(id, formData)
+    console.log(data)
+    const response = await updateProductById.updateById(id, {
+      name: data.name,
+      description: data.description,
+      quantity: data.quantity,
+      price: data.price,
+      category_id: data.category_id,
+      avatar: data.avatar
+    })
     return response
   }, {
     onSuccess: () => {

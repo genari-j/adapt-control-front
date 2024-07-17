@@ -1,10 +1,8 @@
 import { useRouting } from '~/hooks'
-
 import { pageTitle } from '~/utils'
 
-import { StockImg, PeopleStock } from '~/assets'
-
 import { Button } from '~/components'
+import { StockImg, PeopleStock } from '~/assets'
 
 import {
   Container,

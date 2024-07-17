@@ -35,7 +35,7 @@ export const ProductList = () => {
         <Title content='Produtos' />
 
         <NewProductBox>
-          <Link to={`/produtos/cadastrar`}>+ Novo</Link>
+          <Link to='/produtos/cadastrar'>+ Novo</Link>
         </NewProductBox>
 
         <TableBox>
@@ -69,7 +69,6 @@ export const ProductList = () => {
         </TableBox>
 
         <Pagination
-          dataName='Produtos'
           totalCount={Number(products.data?.data.total)}
           totalCountPage={Number(products.data?.data.pages)}
           page={page}

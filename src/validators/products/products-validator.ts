@@ -14,5 +14,5 @@ export const validateUpdateProductSchema = z.object({
   quantity: z.string().min(1, 'Quantidade inválida').transform(number => Number(number)),
   price: z.coerce.number().min(1, 'Valor inválido'),
   category_id: z.number().min(1, 'Categoria inválida'),
-  avatar: z.any()
+  avatar: z.instanceof(FileList)
 })

@@ -75,7 +75,6 @@ export const CategoryList = () => {
         </TableBox>
 
         <Pagination
-          dataName='Categorias'
           totalCount={Number(categories.data?.data.total)}
           totalCountPage={Number(categories.data?.data.pages)}
           page={page}

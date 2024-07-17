@@ -2,16 +2,25 @@ import axios from 'axios'
 import { env } from '~/validators'
 
 const api = axios.create({
-  baseURL: env.VITE_API_URL
+  baseURL: env.VITE_API_URL as string
+})
+
+const formdata = axios.create({
+  baseURL: env.VITE_API_URL as string,
+  headers: {
+    'Content-Type': 'multipart/form-data'
+  }
 })
 
 const token = localStorage.getItem('@AdaptControl:token')
 if (token) {
   api.defaults.headers.common.Authorization = `Bearer ${token}`
+  formdata.defaults.headers.common.Authorization = `Bearer ${token}`
 }
 
 export {
-  api
+  api,
+  formdata
 }
 
 // import axios, { AxiosInstance } from 'axios'

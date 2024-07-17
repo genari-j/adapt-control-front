@@ -24,6 +24,8 @@ interface User {
   }
   active: number
   avatar: string | null
+  exp: number
+  iat: number
   created_at: string
   updated_at: string
 }

@@ -14,12 +14,11 @@ interface PaginationProps {
   totalCount: number
   page: number
   setPage: Dispatch<SetStateAction<number>>
-  dataName: string
 }
 
 import { Container, ButtonsBox } from './styles'
 
-export const Pagination = ({ dataName, totalCountPage, totalCount, page, setPage }: PaginationProps) => {
+export const Pagination = ({ totalCountPage, totalCount, page, setPage }: PaginationProps) => {
   const handleNextPage = () => { if (totalCountPage! > page) { setPage(page + 1) } }
   const handlePreviousPage = () => { if (page > 1) { setPage(page - 1) } }
   const handleLastPage = () => setPage(totalCountPage!)
@@ -28,7 +27,7 @@ export const Pagination = ({ dataName, totalCountPage, totalCount, page, setPage
   return (
     <Container>
       <Title
-        content={`Total de ${dataName}: ${totalCount < 10 ? '0' + totalCount : totalCount}`} size='1.1rem'
+        content={`Total de registros: ${totalCount < 10 ? '0' + totalCount : totalCount}`} size='1.1rem'
       />
 
       <ButtonsBox>

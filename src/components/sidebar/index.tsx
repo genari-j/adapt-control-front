@@ -39,7 +39,7 @@ export const Sidebar = () => {
         <button onClick={handleLogout}><i><MdLogout /></i></button>
         <div>
           {userInfos?.name
-            ? <Link to={`/perfil/${userInfos?.sub}`}> {userInfos.name.split(' ')[0]} </Link>
+            ? <Link to={`/perfil/${userInfos?.sub}`}> {userInfos?.name.split(' ')[0]} </Link>
             : <Link to={`/perfil/${userInfos?.sub}`}> {userInfos?.name} </Link>
           }
           <span>{userInfos?.departments.name}</span>
