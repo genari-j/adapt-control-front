@@ -1,4 +1,4 @@
-import { api, formdata } from '~/api/config'
+import { api } from '~/api/config'
 import { ProductProps, UpdateProductProps } from '~/@types'
 
 export const getAllProducts = {
@@ -31,11 +31,13 @@ export const updateProductById = {
 
     formData.append('name', data.name)
     formData.append('description', data.description)
-    formData.append('quantity', data.quantity)
-    formData.append('price', data.price)
-    formData.append('category_id', data.category_id.toString())
-    formData.append('avatar', data.avatar[0])
+    formData.append('quantity', String(data.quantity))
+    formData.append('price', String(data.price))
+    formData.append('category_id', String(data.category_id))
+    if (data.avatar && data.avatar[0] instanceof File) {
+      formData.append('avatar', data.avatar[0])
+    }
 
-    await formdata.put(path, formData)
+    await api.put(path, formData)
   }
 }
