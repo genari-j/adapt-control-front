@@ -10,7 +10,6 @@ import { type UpdateProductProps } from '~/@types'
 
 export const useUpdateProductMutation = (id: number, navigate: NavigateFunction) =>
   useMutation(async (data: UpdateProductProps) => {
-    console.log(data)
     const response = await updateProductById.updateById(id, {
       name: data.name,
       description: data.description,

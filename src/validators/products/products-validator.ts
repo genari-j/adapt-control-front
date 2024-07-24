@@ -2,8 +2,8 @@ import { z } from 'zod'
 
 export const validateCreateProductSchema = z.object({
   name: z.string().min(1, 'Nome inválido'),
-  description: z.string().min(1, 'Descrição inválida'),
-  quantity: z.string().min(1, 'Quantidade inválida').transform(number => Number(number)),
+  description: z.coerce.number().min(1, 'Descrição inválida'),
+  quantity: z.coerce.number().min(1, 'Quantidade inválida'),
   price: z.coerce.number().min(1, 'Valor inválido'),
   category_id: z.number().min(1, 'Categoria inválida')
 })
@@ -11,8 +11,8 @@ export const validateCreateProductSchema = z.object({
 export const validateUpdateProductSchema = z.object({
   name: z.string().min(1, 'Nome inválido'),
   description: z.string().min(1, 'Descrição inválida'),
-  quantity: z.string().min(1, 'Quantidade inválida').transform(number => Number(number)),
+  quantity: z.coerce.number().min(1, 'Quantidade inválida'),
   price: z.coerce.number().min(1, 'Valor inválido'),
-  category_id: z.number().min(1, 'Categoria inválida'),
-  avatar: z.instanceof(FileList)
+  category_id: z.coerce.number().min(1, 'Categoria inválida'),
+  avatar: z.instanceof(FileList).optional()
 })

@@ -1,8 +1,8 @@
 export interface UpdateProductProps {
   name: string
   description: string
-  quantity: string
-  price: string
+  quantity: number
+  price: number
   category_id: number
   avatar?: FileList
 }
