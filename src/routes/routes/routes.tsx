@@ -28,8 +28,8 @@ export const router = createBrowserRouter([
               { path: '/categorias', element: <Pages.CategoryList /> },
               { path: '/produtos/cadastrar', element: <Pages.ProductCreate /> },
               { path: '/produtos', element: <Pages.ProductList /> },
-              { path: '/produtos/:id', element: <Pages.ProductDetail /> },
-              { path: '/produtos/:id/editar', element: <Pages.ProductEdit /> },
+              { path: '/produtos/:id', element: <Pages.ProductById /> },
+              { path: '/produtos/:id/editar', element: <Pages.ProductUpdate /> },
               { path: '/graficos', element: <Pages.Graphics /> },
               { path: '/perfil/:sub', element: <Pages.Profile /> },
               { path: '/usuarios', element: <Pages.UserList /> }
