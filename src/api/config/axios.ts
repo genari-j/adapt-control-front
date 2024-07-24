@@ -32,7 +32,7 @@ export {
 //       const { isSignedIn } = useSession()
 
 //       if (!isSignedIn()) return config
-//       const jwt: string | null = JSON.parse(localStorage.getItem('@CompanyStock:token') as string)
+//       const jwt: string | null = JSON.parse(localStorage.getItem('@AdaptControl:token') as string)
 
 //       if (jwt !== null) config.headers.Authorization = `Bearer ${jwt}`
 //       return config
@@ -59,7 +59,7 @@ export {
 //       const { isSignedIn } = useSession()
 
 //       if (!isSignedIn()) return config
-//       const jwt: string | null = JSON.parse(localStorage.getItem('@CompanyStock:token') as string)
+//       const jwt: string | null = JSON.parse(localStorage.getItem('@AdaptControl:token') as string)
 
 //       if (jwt !== null) config.headers.Authorization = `Bearer ${jwt}`
 //       return config

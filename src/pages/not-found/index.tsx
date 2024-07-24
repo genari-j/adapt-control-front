@@ -47,7 +47,7 @@ export const NotFound = () => {
 
           <PrecisionAndEfficiency>
             <p>Precisão & eficiência Operacional</p>
-            <p>Company <span>Stock</span> - {new Date().getFullYear()}</p>
+            <p>Adapt <span>Control</span> - {new Date().getFullYear()}</p>
           </PrecisionAndEfficiency>
         </BottomStockBox>
       </Content>
