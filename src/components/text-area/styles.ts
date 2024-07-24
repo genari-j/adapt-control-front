@@ -4,7 +4,6 @@ export const CustomTextarea = styled.textarea`
   width: 100%;
 
   transition: .3s;
-  resize: none;
 
   font-size: 1rem;
   padding: 0.5rem 1rem;

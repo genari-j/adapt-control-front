@@ -34,6 +34,8 @@ export const GlobalStyles = createGlobalStyle`
 
   th { text-align: start; }
 
+  textarea { resize: none; }
+
   body, input, textarea, select, button {
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
     font-weight: 400;
@@ -51,10 +53,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-  }
-  &::-webkit-calendar-picker-indicator {
-    display: none !important;
-  }
+  input::-webkit-inner-spin-button { -webkit-appearance: none; }
+  &::-webkit-calendar-picker-indicator { display: none !important; }
 `
