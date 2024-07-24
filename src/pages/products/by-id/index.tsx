@@ -1,4 +1,4 @@
-import { useProductDetails } from '~/hooks'
+import { useProductById } from '~/hooks'
 
 import { useRouting } from '~/hooks'
 import { Title, Label, Bounce, Button } from '~/components'
@@ -6,12 +6,12 @@ import { Title, Label, Bounce, Button } from '~/components'
 import { Container, Content, ProductsGrid, ProductGroup, ButtonsBox } from './styles'
 import { pageTitle } from '~/utils'
 
-export const ProductDetail = () => {
+export const ProductById = () => {
   pageTitle('Detalhamento Produto')
   const { handleGoToProducts, handleGoToEditProduct } = useRouting()
 
-  const { productDetails } = useProductDetails()
-  const { isLoading, isError, isSuccess, data } = productDetails
+  const { productById } = useProductById()
+  const { isLoading, isError, isSuccess, data } = productById
 
   if (isLoading) { return (<Container> <Bounce /> </Container>) }
 

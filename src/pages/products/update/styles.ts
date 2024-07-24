@@ -5,17 +5,25 @@ export const Container = styled.div`
 
   display: flex;
   justify-content: center;
+
+  padding: 3rem 0;
 `
 
 export const Content = styled.div`
   width: 100%;
   max-width: 920px;
 
-  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 `
 
 export const Form = styled.form`
   width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `
 
 export const ProductsGrid = styled.div`
@@ -42,7 +50,9 @@ export const ProductFileGroup = styled.div`
 
   background: ${props => props.theme['blue8']};
 
-  &:hover { background: ${props => props.theme['blue9']}; }
+  &:hover {
+    background: ${props => props.theme['blue9']};
+  }
 
   label {
     display: flex;
@@ -58,15 +68,24 @@ export const ProductFileGroup = styled.div`
 
     color: ${props => props.theme['white9']};
 
-    img { width: 100% }
+    &:hover {
+      cursor: pointer;
+    }
   }
 
-  input { display: none; }
+  input {
+    display: none;
+  }
 `
 
 export const ButtonsBox = styled.div`
   width: 100%;
 
   display: flex;
+  justify-content: center;
   gap: 1rem;
+
+  button {
+    width: 100%;
+  }
 `

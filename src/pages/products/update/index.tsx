@@ -1,4 +1,4 @@
-import { useRouting, useProductDetails, useProductEditing } from '~/hooks'
+import { useRouting, useProductById, useProductUpdating } from '~/hooks'
 import { useGetCategories } from '~/api/cache/queries'
 
 import { pageTitle } from '~/utils'
@@ -14,24 +14,24 @@ import {
   ButtonsBox
 } from './styles'
 
-export const ProductEdit = () => {
+export const ProductUpdate = () => {
   pageTitle('Edição Produto')
   const { handleGoToProductDetail } = useRouting()
 
-  const { productEditing, onSubmit, register, handleSubmit, formState: { errors } } = useProductEditing()
-  const { productDetails } = useProductDetails()
+  const { productUpdating, onSubmit, register, handleSubmit, formState: { errors } } = useProductUpdating()
+  const { productById } = useProductById()
   const categories = useGetCategories(1, Number(5000))
 
-  if (productDetails.isLoading) {
+  if (productById.isLoading) {
     return (<Container> <Bounce /> </Container>)
   }
 
   // Criar componente de ERRO
-  if (productDetails.isError) {
+  if (productById.isError) {
     return (<Container> <h2>Deu erro no trem!</h2> </Container>)
   }
 
-  if (productDetails.isSuccess && !productDetails.isLoading) {
+  if (productById.isSuccess && !productById.isLoading) {
     return (
       <Container>
 
@@ -45,7 +45,7 @@ export const ProductEdit = () => {
                 <TextField
                   type='text'
                   placeholder='Nome'
-                  defaultValue={productDetails.data?.data.data.name}
+                  defaultValue={productById.data?.data.data.name}
                   register={register('name')}
                   id='name'
                   error={(errors.name != null)}
@@ -58,7 +58,7 @@ export const ProductEdit = () => {
                 <TextField
                   type='number'
                   placeholder='Valor'
-                  defaultValue={productDetails.data?.data.data.price}
+                  defaultValue={productById.data?.data.data.price}
                   register={register('price')}
                   id='price'
                   error={(errors.price != null)}
@@ -69,9 +69,9 @@ export const ProductEdit = () => {
               <ProductGroup>
                 <Label htmlFor='quantity' content='Quantidade:' />
                 <TextField
-                  type='text'
+                  type='number'
                   placeholder='Quantidade'
-                  defaultValue={productDetails.data?.data.data.quantity}
+                  defaultValue={productById.data?.data.data.quantity}
                   register={register('quantity')}
                   id='quantity'
                   error={(errors.quantity != null)}
@@ -83,7 +83,7 @@ export const ProductEdit = () => {
                 <Label htmlFor='category' content='Categoria:' />
 
                 <Select
-                  defaults={productDetails.data?.data.data.category}
+                  defaults={productById.data?.data.data.category}
                   data={!categories.isLoading && categories.isSuccess ? categories.data?.data.data : []}
                   register={register('category_id', { valueAsNumber: true })}
                   id='category'
@@ -97,7 +97,7 @@ export const ProductEdit = () => {
               <Label htmlFor='description' content='Descrição:' />
               <Textarea
                 placeholder='Descrição do produto'
-                defaultValue={productDetails.data?.data.data.description}
+                defaultValue={productById.data?.data.data.description}
                 rows={5}
                 register={register('description')}
                 id='description'
@@ -107,11 +107,11 @@ export const ProductEdit = () => {
             </ProductGroup>
 
             <ProductFileGroup>
-              <Label htmlFor='avatar' content='Upload' />
+              <Label htmlFor='avatar' content='Escolher arquivo' />
               <TextField
                 type='file'
                 placeholder='Avatar'
-                defaultValue={productDetails.data?.data.data.avatar ? productDetails.data?.data.data.avatar : ''}
+                defaultValue={productById.data?.data.data.avatar ? productById.data?.data.data.avatar : ''}
                 register={register('avatar')}
                 id='avatar'
                 error={(errors.avatar != null)}
@@ -122,13 +122,13 @@ export const ProductEdit = () => {
             <ButtonsBox>
               <Button
                 type='submit'
-                disabled={productEditing.isLoading}
-                buttonContent={productEditing.isLoading ? <Bounce bgColor='white' /> : 'Salvar Alterações'}
+                disabled={productUpdating.isLoading}
+                buttonContent={productUpdating.isLoading ? <Bounce bgColor='white' /> : 'Salvar Alterações'}
               />
 
               <Button
                 buttonContent='VOLTAR'
-                onClick={() => handleGoToProductDetail(Number(productDetails.data?.data.data.id))}
+                onClick={() => handleGoToProductDetail(Number(productById.data?.data.data.id))}
               />
             </ButtonsBox>
           </Form>
