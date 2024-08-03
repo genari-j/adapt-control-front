@@ -1,10 +1,16 @@
-import { useProductById } from '~/hooks'
+import { useGetProductFileByName } from '~/api/cache/queries'
+import { useProductById, useRouting } from '~/hooks'
+import { pageTitle } from '~/utils'
 
-import { useRouting } from '~/hooks'
 import { Title, Label, Bounce, Button } from '~/components'
 
-import { Container, Content, ProductsGrid, ProductGroup, ButtonsBox } from './styles'
-import { pageTitle } from '~/utils'
+import {
+  Container,
+  Content,
+  ProductsGrid,
+  ProductGroup,
+  ButtonsBox
+} from './styles'
 
 export const ProductById = () => {
   pageTitle('Detalhamento Produto')
@@ -12,6 +18,10 @@ export const ProductById = () => {
 
   const { productById } = useProductById()
   const { isLoading, isError, isSuccess, data } = productById
+
+  const { data: newData } = useGetProductFileByName(String(data?.data.data.avatar))
+  // const objectURL = URL.createObjectURL(newData)
+  console.log(newData)
 
   if (isLoading) { return (<Container> <Bounce /> </Container>) }
 
@@ -53,7 +63,7 @@ export const ProductById = () => {
 
           <ProductGroup>
             <Label content='Avatar:' />
-            <span>{data?.data.data.avatar ? data?.data.data.avatar : 'Não há foto'}</span>
+            {/* <img src={blobUrl} alt={data?.data.data.name} title={data?.data.data.name} /> */}
           </ProductGroup>
 
           <ButtonsBox>

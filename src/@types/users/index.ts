@@ -1,3 +1,6 @@
 export * from './sign-in'
 export * from './sign-up'
+export * from './sol-reset-psw'
+export * from './update-password'
 export * from './users'
+export * from './verify-token'

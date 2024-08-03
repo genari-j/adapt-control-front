@@ -27,7 +27,7 @@ export interface User {
 
 export interface UsersProps  {
   data: User[]
-  error: Boolean
+  error: boolean
   limit: number
   currentPage: number
   pages: number

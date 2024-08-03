@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useSignIn } from '~/hooks'
+import { useGeneralStates, useSignIn } from '~/hooks'
 import { pageTitle } from '~/utils'
 
 import { Title, Label, TextField, FormHelper, Bounce, Button } from '~/components'
@@ -17,10 +16,10 @@ import {
 
 export const SignIn = () => {
   pageTitle('Entrar')
-  const { signIn, onSubmit, handleSubmit, register, formState: { errors } } = useSignIn()
 
-  const [passwordState, setPasswordState] = useState(false)
-  const handleShowPassword = () => setPasswordState(prevState => !prevState)
+  const { passwordState, handleShowPassword } = useGeneralStates()
+
+  const { signIn, onSubmit, handleSubmit, register, formState: { errors } } = useSignIn()
 
   return (
     <Container>

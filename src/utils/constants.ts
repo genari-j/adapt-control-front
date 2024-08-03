@@ -17,7 +17,7 @@ export const sidebarElements = [
   { id: 3, img: Products, url: '/produtos', title: 'Produtos' },
   { id: 4, img: Categories, url: '/categorias', title: 'Categorias' },
   { id: 5, img: Sales, url: '/vendas', title: 'Vendas' },
-  { id: 6, img: LineChart, url: '/graficos', title: 'Gráficos' }
+  { id: 6, img: LineChart, url: '/graficos', title: 'Dashboard' }
 ]
 
 export const productsHeadTB = [

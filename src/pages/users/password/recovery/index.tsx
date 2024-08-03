@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 
+import { useSolicitationReset } from '~/hooks'
 import { pageTitle } from '~/utils'
 
-import { Title, Label, TextField, Button } from '~/components'
+import { Title, Label, TextField, Button, Bounce, FormHelper } from '~/components'
 import { ArrowBack } from '~/assets'
 
 import {
@@ -14,12 +15,11 @@ import {
 export const PasswordRecovery = () => {
   pageTitle('Recuperação de senha')
 
-  // const { signIn, onSubmit, handleSubmit, register, formState: { errors } } = useSignIn()
+  const { solicitationReset, onSubmit, handleSubmit, register, formState: { errors } } = useSolicitationReset()
 
   return (
     <Container>
-      {/* onSubmit={handleSubmit(onSubmit)} */}
-      <Form>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Link to='/entrar'><ArrowBack /></Link>
 
         <Title content='Recuperação de Senha' />
@@ -29,18 +29,17 @@ export const PasswordRecovery = () => {
           <TextField
             type='email'
             placeholder='Seu e-mail'
-            // register={register('email')}
+            register={register('email')}
             id='email'
-            // error={(errors.email != null)}
+            error={(errors.email != null)}
           />
-          {/* {(errors.email != null) && <FormHelper content={`${errors.email.message}`} />} */}
+          {(errors.email != null) && <FormHelper content={`${errors.email.message}`} />}
         </TextFieldGroup>
 
         <Button
           type='submit'
-          // disabled={signIn.isLoading}
-          // buttonContent={signIn.isLoading ? <Bounce bgColor='white' /> : 'Entrar'}
-          buttonContent='Solicitar'
+          disabled={solicitationReset.isLoading}
+          buttonContent={solicitationReset.isLoading ? <Bounce bgColor='white' /> : 'Solicitar'}
         />
       </Form>
     </Container>

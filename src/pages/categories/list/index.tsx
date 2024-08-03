@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useModalControl } from '~/hooks'
+import { useGeneralStates } from '~/hooks'
 
 import { useGetCategories } from '~/api/cache/queries'
 
@@ -32,7 +32,7 @@ import {
 
 export const CategoryList = () => {
   pageTitle('Categorias')
-  const { showModal, handleChangeModalVisibility } = useModalControl()
+  const { showModal, handleChangeModalVisibility } = useGeneralStates()
 
   const [page, setPage] = useState(1)
   const categories = useGetCategories(page)

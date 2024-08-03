@@ -37,3 +37,25 @@ export const validateSignUpSchema = z.object({
     z.number()
     .min(1, 'Perfil inválido')
 })
+
+export const validateSolicitationResetSchema = z.object({
+  email: z.string()
+    .min(1, 'Informe um e-mail válido para solicitar o Reset de Senha')
+    .email('O e-mail deve conter um domínio @hotmail.com')
+    .refine((value) => value.endsWith('@hotmail.com'), {
+      message: 'O e-mail deve conter um domínio @hotmail.com'
+    })
+})
+
+export const validateConfirmPasswordSchema = z.object({
+  password:
+    z.string()
+    .min(1, 'A senha deve conter no mínimo 6 caracteres'),
+  confirmPassword:
+    z.string()
+    .min(1, 'A senha deve conter no mínimo 6 caracteres'),
+})
+.refine((data) => data.password === data.confirmPassword, {
+  message: 'As senhas não conferem',
+  path: ['confirmPassword']
+})

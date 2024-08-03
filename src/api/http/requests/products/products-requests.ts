@@ -3,11 +3,13 @@ import { ProductProps, UpdateProductProps } from '~/@types'
 
 export const getAllProducts = {
   listAll: async (page = 1) => {
-    let queryParams
-
-    queryParams = new URLSearchParams({
+    const queryParams = new URLSearchParams({
       page: String(page)
     })
+
+    // if (otherFilter) {
+    //   queryParams.append(otherFilter)
+    // }
 
     const url = `/products?${queryParams}`
     return await api.get(url)
@@ -39,5 +41,14 @@ export const updateProductById = {
     }
 
     await api.put(path, formData)
+  }
+}
+
+export const getProductFileByName = {
+  getProductFile: async (filename: string) => {
+    const response = await api.get(`/products/file/${filename}`, {
+      responseType: 'arraybuffer'
+    })
+    return response
   }
 }

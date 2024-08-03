@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useSignUp } from '~/hooks'
+import { useGeneralStates, useSignUp } from '~/hooks'
 import { useGetDepartments, useGetProfiles } from '~/api/cache/queries'
 
 import { pageTitle } from '~/utils'
@@ -21,13 +20,13 @@ import {
 
 export const SignUp = () => {
   pageTitle('Cadastro')
+
+  const { passwordState, handleShowPassword } = useGeneralStates()
+
   const { signUp, onSubmit, register, handleSubmit, formState: { errors } } = useSignUp()
 
   const departments = useGetDepartments()
   const profiles = useGetProfiles()
-
-  const [passwordState, setPasswordState] = useState(false)
-  const handleShowPassword = () => setPasswordState(prevState => !prevState)
 
   return (
     <Container>
