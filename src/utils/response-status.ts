@@ -6,6 +6,9 @@ export const responseStatus = (error: AxiosError) => {
     case 500:
       toast.error('Ops, houve um erro ao tentar conexão com o servidor.')
       break
+    case 404:
+      toast.error('Solicitação não encontrada.')
+      break
     case 400:
       toast.error('Ocorreu algum erro com a solicitação.')
       break
