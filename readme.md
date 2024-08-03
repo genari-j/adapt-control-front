@@ -11,7 +11,7 @@
 
 </div>
 
-Este é o Frontend de uma aplicação Fullstack, que está comunicando com sua própria [API](https://github.com/victorgenari/adapt-control-api), desenvolvido utilizando **[React](https://react.dev/), [React-Query](https://tanstack.com/query/v4/docs/framework/react/devtools), [Typescript](https://www.typescriptlang.org/), [Axios](https://axios-http.com/), [Styled-components](https://styled-components.com/) and [ZOD](https://zod.dev/).** 
+Este é o Frontend de uma aplicação Fullstack, que está comunicando com sua própria [API](https://github.com/genari-j/adapt-control-api), desenvolvido utilizando **[React](https://react.dev/), [React-Query](https://tanstack.com/query/v4/docs/framework/react/devtools), [Typescript](https://www.typescriptlang.org/), [Axios](https://axios-http.com/), [Styled-components](https://styled-components.com/) and [ZOD](https://zod.dev/).** 
 
 A Aplicação simula as funcionalidades para controlar um comércio, seja um Mercado, Loja ou equivalente. Usuários podem registrar produtos, categorias, vendas e verificar como está fluindo o estoque de produtos.
 
@@ -25,7 +25,7 @@ A Aplicação simula as funcionalidades para controlar um comércio, seja um Mer
 
 1. Clone o repositório:
 
-    - `git clone https://github.com/victorgenari/adapt-control-front`
+    - `git clone https://github.com/genari-j/adapt-control-front.git`
 
 2. Instale as dependências com yarn
 
