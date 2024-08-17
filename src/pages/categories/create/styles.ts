@@ -64,14 +64,6 @@ export const Form = styled.form`
   gap: 1rem;
 `
 
-export const TextFieldGroup = styled.div`
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
 export const ButtonsBox = styled.div`
   width: 100%;
 

@@ -2,14 +2,13 @@ import { useRouting, useProductById, useProductUpdating } from '~/hooks'
 import { useGetCategories } from '~/api/cache/queries'
 
 import { pageTitle } from '~/utils'
-import { Title, Label, Bounce, Button, TextField, FormHelper, Textarea, Select } from '~/components'
+import { Title, Bounce, Button, TextField, Textarea, Select } from '~/components'
 
 import {
   Container,
   Content,
   Form,
   ProductsGrid,
-  ProductGroup,
   ProductFileGroup,
   ButtonsBox
 } from './styles'
@@ -40,83 +39,77 @@ export const ProductUpdate = () => {
 
           <Form onSubmit={handleSubmit(onSubmit)}>
             <ProductsGrid>
-              <ProductGroup>
-                <Label htmlFor='name' content='Nome:' />
-                <TextField
-                  type='text'
-                  placeholder='Nome'
-                  defaultValue={productById.data?.data.data.name}
-                  register={register('name')}
-                  id='name'
-                  error={(errors.name != null)}
-                />
-                {(errors.name != null) && <FormHelper content={`${errors.name.message}`} />}
-              </ProductGroup>
+              <TextField
+                id='name'
+                type='text'
+                label='Nome:'
+                htmlFor='name'
+                placeholder='Nome'
+                defaultValue={productById.data?.data.data.name}
+                register={register('name')}
+                error={(errors.name != null)}
+                message={errors?.name?.message}
+              />
 
-              <ProductGroup>
-                <Label htmlFor='price' content='Valor:' />
-                <TextField
-                  type='number'
-                  placeholder='Valor'
-                  defaultValue={productById.data?.data.data.price}
-                  register={register('price')}
-                  id='price'
-                  error={(errors.price != null)}
-                />
-                {(errors.price != null) && <FormHelper content={`${errors.price.message}`} />}
-              </ProductGroup>
+              <TextField
+                id='price'
+                type='number'
+                label='Valor:'
+                htmlFor='price'
+                placeholder='Valor'
+                defaultValue={productById.data?.data.data.price}
+                register={register('price')}
+                error={(errors.price != null)}
+                message={errors?.price?.message}
+              />
 
-              <ProductGroup>
-                <Label htmlFor='quantity' content='Quantidade:' />
-                <TextField
-                  type='number'
-                  placeholder='Quantidade'
-                  defaultValue={productById.data?.data.data.quantity}
-                  register={register('quantity')}
-                  id='quantity'
-                  error={(errors.quantity != null)}
-                />
-                {(errors.quantity != null) && <FormHelper content={`${errors.quantity.message}`} />}
-              </ProductGroup>
+              <TextField
+                id='quantity'
+                type='number'
+                label='Quantidade:'
+                htmlFor='quantity'
+                placeholder='Quantidade'
+                defaultValue={productById.data?.data.data.quantity}
+                register={register('quantity')}
+                error={(errors.quantity != null)}
+                message={errors?.quantity?.message}
+              />
 
-              <ProductGroup>
-                <Label htmlFor='category' content='Categoria:' />
-
-                <Select
-                  defaults={productById.data?.data.data.category}
-                  data={!categories.isLoading && categories.isSuccess ? categories.data?.data.data : []}
-                  register={register('category_id', { valueAsNumber: true })}
-                  id='category'
-                  {...(errors.category_id != null && { error: true })}
-                />
-                {(errors.category_id != null) && <FormHelper content={`${errors.category_id.message}`} />}
-              </ProductGroup>
+              <Select
+                id='category'
+                label='Categoria:'
+                htmlFor='category'
+                defaults={productById.data?.data.data.category}
+                data={!categories.isLoading && categories.isSuccess ? categories.data?.data.data : []}
+                register={register('category_id', { valueAsNumber: true })}
+                {...(errors.category_id != null && { error: true })}
+                message={errors?.category_id?.message}
+              />
             </ProductsGrid>
 
-            <ProductGroup>
-              <Label htmlFor='description' content='Descrição:' />
-              <Textarea
-                placeholder='Descrição do produto'
-                defaultValue={productById.data?.data.data.description}
-                rows={5}
-                register={register('description')}
-                id='description'
-                error={(errors.description != null)}
-              />
-              {(errors.description != null) && <FormHelper content={`${errors.description.message}`} />}
-            </ProductGroup>
+            <Textarea
+              id='description'
+              htmlFor='description' content='Descrição:'
+              placeholder='Descrição do produto'
+              defaultValue={productById.data?.data.data.description}
+              rows={5}
+              register={register('description')}
+              error={(errors.description != null)}
+              message={errors?.description?.message}
+            />
 
             <ProductFileGroup>
-              <Label htmlFor='avatar' content='Escolher arquivo' />
               <TextField
+                id='avatar'
                 type='file'
+                label='Escolher arquivo'
+                htmlFor='avatar'
                 placeholder='Avatar'
                 defaultValue={productById.data?.data.data.avatar ? productById.data?.data.data.avatar : ''}
                 register={register('avatar')}
-                id='avatar'
                 error={(errors.avatar != null)}
+                message={errors?.avatar?.message}
               />
-              {(errors.avatar != null) && <FormHelper content={`${errors.avatar.message}`} />}
             </ProductFileGroup>
 
             <ButtonsBox>

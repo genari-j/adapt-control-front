@@ -1,6 +1,6 @@
 {
   "name": "adapt-control-front",
-  "description": "API desenvolvida para atender às necessidade do Controle Adaptável",
+  "description": "Frontend desenvolvido para atender às necessidade do Controle Adaptável",
   "private": true,
   "version": "0.0.0",
   "type": "module",

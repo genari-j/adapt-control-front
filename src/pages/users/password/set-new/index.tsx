@@ -4,15 +4,10 @@ import { useVerifyToken } from '~/api/cache/queries'
 import { useConfirmNewPassword, useGeneralStates } from '~/hooks'
 import { pageTitle } from '~/utils'
 
-import { Title, Label, TextField, Button, Bounce, FormHelper } from '~/components'
+import { Title, TextField, Button, Bounce } from '~/components'
 import { AiOutlineEye, AiOutlineEyeInvisible } from '~/assets'
 
-import {
-  Container,
-  Form,
-  TextFieldGroup,
-  ShowPasswordBtn
-} from './styles'
+import { Container, Form, ShowPasswordBtn } from './styles'
 
 export const SetNewPassword = () => {
   pageTitle('Definir nova senha')
@@ -35,30 +30,28 @@ export const SetNewPassword = () => {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Title content='Definir Nova Senha' />
 
-        <TextFieldGroup>
-          <Label htmlFor='password' content='Nova senha:' />
-          <TextField
-            type={passwordState ? 'text' : 'password'}
-            placeholder='Nova senha'
-            register={register('password')}
-            id='password'
-            {...(errors.password != null && { error: true })}
-          />
-          {(errors.password != null) && <FormHelper content={`${errors.password.message}`} />}
-        </TextFieldGroup>
+        <TextField
+          id='password'
+          type={passwordState ? 'text' : 'password'}
+          label='Nova senha:'
+          htmlFor='password'
+          placeholder='Nova senha'
+          register={register('password')}
+          message={errors?.password?.message}
+          {...(errors.password != null && { error: true })}
+        />
 
-        <TextFieldGroup>
-          <Label htmlFor='confirmPassword' content='Confirme a senha:' />
-          <TextField
-            type={passwordState ? 'text' : 'password'}
-            placeholder='Confirme a senha'
-            register={register('confirmPassword')}
-            id='confirmPassword'
-            {...(errors.confirmPassword != null && { error: true })}
-            children={<ShowPasswordBtn type='button' onClick={handleShowPassword}>{passwordState ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}</ShowPasswordBtn>}
-          />
-          {(errors.confirmPassword != null) && <FormHelper content={`${errors.confirmPassword.message}`} />}
-        </TextFieldGroup>
+        <TextField
+          id='confirmPassword'
+          type={passwordState ? 'text' : 'password'}
+          label='Confirme a senha:'
+          htmlFor='confirmPassword'
+          placeholder='Confirme a senha'
+          register={register('confirmPassword')}
+          message={errors?.confirmPassword?.message}
+          {...(errors.confirmPassword != null && { error: true })}
+          children={<ShowPasswordBtn type='button' onClick={handleShowPassword}>{passwordState ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}</ShowPasswordBtn>}
+        />
 
         <Button
           type='submit'
@@ -68,7 +61,7 @@ export const SetNewPassword = () => {
       </Form>
       )}
 
-      {verifyToken.isError && 'Envia um Token válido ai amigão ..'}
+      {verifyToken.isError && 'Necessário conter uma autenticação válida ..'}
     </Container>
   )
 }

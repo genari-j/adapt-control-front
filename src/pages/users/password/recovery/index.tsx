@@ -3,14 +3,10 @@ import { Link } from 'react-router-dom'
 import { useSolicitationReset } from '~/hooks'
 import { pageTitle } from '~/utils'
 
-import { Title, Label, TextField, Button, Bounce, FormHelper } from '~/components'
+import { Title, TextField, Button, Bounce } from '~/components'
 import { ArrowBack } from '~/assets'
 
-import {
-  Container,
-  Form,
-  TextFieldGroup
-} from './styles'
+import { Container, Form } from './styles'
 
 export const PasswordRecovery = () => {
   pageTitle('Recuperação de senha')
@@ -24,17 +20,16 @@ export const PasswordRecovery = () => {
 
         <Title content='Recuperação de Senha' />
 
-        <TextFieldGroup>
-          <Label htmlFor='email' content='E-mail:' />
-          <TextField
-            type='email'
-            placeholder='Seu e-mail'
-            register={register('email')}
-            id='email'
-            error={(errors.email != null)}
-          />
-          {(errors.email != null) && <FormHelper content={`${errors.email.message}`} />}
-        </TextFieldGroup>
+        <TextField
+          id='email'
+          type='email'
+          label='E-mail:'
+          htmlFor='email'
+          placeholder='Seu e-mail'
+          register={register('email')}
+          error={(errors.email != null)}
+          message={errors?.email?.message}
+        />
 
         <Button
           type='submit'

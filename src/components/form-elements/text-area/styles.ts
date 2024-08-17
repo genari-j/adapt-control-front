@@ -1,5 +1,9 @@
 import { styled } from 'styled-components'
 
+export const Container = styled.div`
+  width: 100%;
+`
+
 export const CustomTextarea = styled.textarea`
   width: 100%;
 

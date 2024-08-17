@@ -43,12 +43,3 @@ export const updateProductById = {
     await api.put(path, formData)
   }
 }
-
-export const getProductFileByName = {
-  getProductFile: async (filename: string) => {
-    const response = await api.get(`/products/file/${filename}`, {
-      responseType: 'arraybuffer'
-    })
-    return response
-  }
-}

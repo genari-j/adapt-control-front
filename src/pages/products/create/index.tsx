@@ -3,14 +3,13 @@ import { useProductCreating } from '~/hooks'
 
 import { pageTitle } from '~/utils'
 
-import { Title, Label, TextField, FormHelper, Select, Textarea, Button, Bounce } from '~/components'
+import { Title, TextField, Select, Textarea, Button, Bounce } from '~/components'
 
 import {
   Container,
   Form,
   FormContent,
   TextFieldGrid,
-  TextFieldGroup,
   ButtonBox
 } from './styles'
 
@@ -28,65 +27,60 @@ export const ProductCreate = () => {
 
         <FormContent>
           <TextFieldGrid>
-            <TextFieldGroup>
-              <Label htmlFor='name' content='Produto:' />
-              <TextField
-                type='text'
-                placeholder='Produto'
-                register={register('name')}
-                id='name'
-                error={(errors.name != null)}
-              />
-              {(errors.name != null) && <FormHelper content={`${errors.name.message}`} />}
-            </TextFieldGroup>
+            <TextField
+              id='name'
+              type='text'
+              label='Produto:'
+              htmlFor='name'
+              placeholder='Produto'
+              register={register('name')}
+              error={(errors.name != null)}
+              message={errors?.name?.message}
+            />
 
-            <TextFieldGroup>
-              <Label htmlFor='price' content='Valor:' />
-              <TextField
-                type='number'
-                placeholder='Valor'
-                register={register('price')}
-                id='price'
-                {...(errors.price != null && { error: true })}
-              />
-              {(errors.price != null) && <FormHelper content={`${errors.price.message}`} />}
-            </TextFieldGroup>
+            <TextField
+              id='price'
+              type='number'
+              label='Valor:'
+              htmlFor='price'
+              placeholder='Valor'
+              register={register('price')}
+              {...(errors.price != null && { error: true })}
+              message={errors?.price?.message}
+            />
 
-            <TextFieldGroup>
-              <Label htmlFor='quantity' content='Quantidade:' />
-              <TextField
-                type='number'
-                placeholder='Quantidade'
-                register={register('quantity')}
-                id='quantity'
-                error={(errors.quantity != null)}
-              />
-              {(errors.quantity != null) && <FormHelper content={`${errors.quantity.message}`} />}
-            </TextFieldGroup>
+            <TextField
+              id='quantity'
+              type='number'
+              label='Quantidade:'
+              htmlFor='quantity'
+              placeholder='Quantidade'
+              register={register('quantity')}
+              error={(errors.quantity != null)}
+              message={errors?.quantity?.message}
+            />
 
-            <TextFieldGroup>
-              <Label htmlFor='category' content='Categoria:' />
-              <Select
-                data={!categories.isLoading && categories.isSuccess ? categories.data?.data.data : []}
-                register={register('category_id', { valueAsNumber: true })}
-                id='category'
-                {...(errors.category_id != null && { error: true })}
-              />
-              {(errors.category_id != null) && <FormHelper content={`${errors.category_id.message}`} />}
-            </TextFieldGroup>
+            <Select
+              id='category'
+              label='Categoria:'
+              htmlFor='category'
+              data={!categories.isLoading && categories.isSuccess ? categories.data?.data.data : []}
+              register={register('category_id', { valueAsNumber: true })}
+              {...(errors.category_id != null && { error: true })}
+              message={errors?.category_id?.message}
+            />
           </TextFieldGrid>
 
-          <TextFieldGroup>
-            <Label htmlFor='description' content='Descrição:' />
-            <Textarea
-              placeholder='Descrição do produto'
-              rows={5}
-              register={register('description')}
-              id='description'
-              error={(errors.description != null)}
-            />
-            {(errors.description != null) && <FormHelper content={`${errors.description.message}`} />}
-          </TextFieldGroup>
+          <Textarea
+            id='description'
+            label='Descrição:'
+            htmlFor='description'
+            placeholder='Descrição do produto'
+            rows={5}
+            register={register('description')}
+            error={(errors.description != null)}
+            message={errors?.description?.message}
+          />
         </FormContent>
 
         <ButtonBox>

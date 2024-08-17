@@ -6,13 +6,12 @@ import { useGetDepartments, useGetProfiles } from '~/api/cache/queries'
 import { pageTitle } from '~/utils'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 
-import { Title, Label, TextField, FormHelper, Select, Button, Bounce } from '~/components'
+import { Title, TextField, Select, Button, Bounce } from '~/components'
 
 import {
   Container,
   Form,
   FormContent,
-  TextFieldGroup,
   ShowPasswordBtn,
   CreateAccountOrForgotPass,
   ButtonBox
@@ -34,76 +33,77 @@ export const SignUp = () => {
         <Title content='Cadastro' />
 
         <FormContent>
-          <TextFieldGroup>
-            <Label htmlFor='name' content='Nome:' />
-            <TextField
-              type='text'
-              placeholder='Seu nome'
-              register={register('name')}
-              id='name'
-              error={(errors.name != null)}
-            />
-            {(errors.name != null) && <FormHelper content={`${errors.name.message}`} />}
-          </TextFieldGroup>
+          <TextField
+            id='name'
+            type='number'
+            label='Nome:'
+            htmlFor='name'
+            placeholder='Seu nome'
+            register={register('name')}
+            error={(errors.name != null)}
+            message={errors?.name?.message}
+          />
 
-          <TextFieldGroup>
-            <Label htmlFor='user_code' content='Matrícula:' />
-            <TextField
-              type='number'
-              placeholder='Sua matrícula'
-              register={register('user_code')}
-              id='user_code'
-              error={(errors.user_code != null)}
-            />
-            {(errors.user_code != null) && <FormHelper content={`${errors.user_code.message}`} />}
-          </TextFieldGroup>
+          <TextField
+            id='user_code'
+            type='number'
+            label='Matrícula:'
+            htmlFor='user_code'
+            placeholder='Sua matrícula'
+            register={register('user_code')}
+            error={(errors.user_code != null)}
+            message={errors?.user_code?.message}
+          />
 
-          <TextFieldGroup>
-            <Label htmlFor='email' content='E-mail:' />
-            <TextField
-              type='email'
-              placeholder='Seu e-mail'
-              register={register('email')}
-              id='email'
-              error={(errors.email != null)}
-            />
-            {(errors.email != null) && <FormHelper content={`${errors.email.message}`} />}
-          </TextFieldGroup>
+          <TextField
+            id='email'
+            type='number'
+            label='E-mail:'
+            htmlFor='email'
+            placeholder='Seu e-mail'
+            register={register('email')}
+            error={(errors.email != null)}
+            message={errors?.email?.message}
+          />
 
-          <TextFieldGroup>
-            <Label htmlFor='password' content='Senha:' />
-            <TextField
-              type={passwordState ? 'text' : 'password'}
-              placeholder='Sua senha'
-              register={register('password')}
-              id='password'
-              {...(errors.password != null && { error: true })}
-              children={<ShowPasswordBtn type='button' onClick={handleShowPassword}>{passwordState ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}</ShowPasswordBtn>}
-            />
-            {(errors.password != null) && <FormHelper content={`${errors.password.message}`} />}
-          </TextFieldGroup>
+          <TextField
+            id='password'
+            type={passwordState ? 'text' : 'password'}
+            label='Senha:'
+            htmlFor='password'
+            placeholder='Sua senha'
+            register={register('password')}
+            {...(errors.password != null && { error: true })}
+            message={errors?.password?.message}
+            children={
+              <ShowPasswordBtn
+                type='button'
+                onClick={handleShowPassword}
+              >
+                {passwordState ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+              </ShowPasswordBtn>
+            }
+          />
 
-          <TextFieldGroup>
-            <Label htmlFor='department' content='Departamento:' />
-            <Select
-              data={!departments.isLoading && departments.isSuccess ? departments.data?.data.data : []}
-              register={register('department_id', { valueAsNumber: true })}
-              id='department'
-              {...(errors.department_id != null && { error: true })}
-            />
-            {(errors.department_id != null) && <FormHelper content={`${errors.department_id.message}`} />}
-          </TextFieldGroup>
+          <Select
+            id='department'
+            label='Departamento:'
+            htmlFor='department'
+            data={!departments.isLoading && departments.isSuccess ? departments.data?.data.data : []}
+            register={register('department_id', { valueAsNumber: true })}
+            {...(errors.department_id != null && { error: true })}
+            message={errors?.department_id?.message}
+          />
 
-          <TextFieldGroup>
-            <Label htmlFor='profile' content='Perfil:' />
-            <Select
-              data={!profiles.isLoading && profiles.isSuccess ? profiles.data?.data.data : []}
-              register={register('profile_id', { valueAsNumber: true })}
-              id='profile'
-              {...(errors.profile_id != null && { error: true })}
-            />
-            {(errors.profile_id != null) && <FormHelper content={`${errors.profile_id.message}`} />}
-          </TextFieldGroup>
+          <Select
+            id='profile'
+            label='Perfil:'
+            htmlFor='profile'
+            data={!profiles.isLoading && profiles.isSuccess ? profiles.data?.data.data : []}
+            register={register('profile_id', { valueAsNumber: true })}
+            {...(errors.profile_id != null && { error: true })}
+            message={errors?.profile_id?.message}
+          />
         </FormContent>
 
         <ButtonBox>

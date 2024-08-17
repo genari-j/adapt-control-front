@@ -41,14 +41,6 @@ export const TextFieldGrid = styled.div`
   gap: 1rem;
 `
 
-export const TextFieldGroup = styled.div`
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
 export const ButtonBox = styled.div`
   width: 100%;
 

@@ -2,14 +2,13 @@ import { RiCloseCircleLine } from 'react-icons/ri'
 
 import { useCategoryCreating } from '~/hooks'
 
-import { Label, TextField, FormHelper, Button, Bounce, Title, Textarea } from '~/components'
+import { TextField, Button, Bounce, Title, Textarea } from '~/components'
 
 import {
   Container,
   Content,
   CloseBtn,
   Form,
-  TextFieldGroup,
   ButtonsBox
 } from './styles'
 
@@ -30,29 +29,27 @@ export const CategoryCreate = ({ handleChangeModalVisibility }: CategoryCreatePr
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Title content='Nova categoria' />
 
-          <TextFieldGroup>
-            <Label htmlFor='name' content='Categoria:' />
-            <TextField
-              type='text'
-              placeholder='Categoria'
-              register={register('name')}
-              id='name'
-              error={(errors.name != null)}
-            />
-            {(errors.name != null) && <FormHelper content={`${errors.name.message}`} />}
-          </TextFieldGroup>
+          <TextField
+            id='name'
+            type='text'
+            label='Categoria:'
+            htmlFor='name'
+            placeholder='Categoria'
+            register={register('name')}
+            error={(errors.name != null)}
+            message={errors?.name?.message}
+          />
 
-          <TextFieldGroup>
-            <Label htmlFor='description' content='Descrição:' />
-            <Textarea
-              placeholder='Descrição da categoria'
-              rows={5}
-              register={register('description')}
-              id='description'
-              error={(errors.description != null)}
-            />
-            {(errors.description != null) && <FormHelper content={`${errors.description.message}`} />}
-          </TextFieldGroup>
+          <Textarea
+            id='description'
+            label='Descrição:'
+            htmlFor='description'
+            placeholder='Descrição da categoria'
+            rows={5}
+            register={register('description')}
+            error={(errors.description != null)}
+            message={errors?.description?.message}
+          />
 
           <ButtonsBox>
             <Button

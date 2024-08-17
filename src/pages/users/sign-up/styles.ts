@@ -36,15 +36,6 @@ export const FormContent = styled.div`
   gap: 1rem;
 `
 
-export const TextFieldGroup = styled.div`
-  width: 100%;
-  max-width: 450px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
 export const ShowPasswordBtn = styled.button`
   display: flex;
   

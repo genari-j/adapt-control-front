@@ -34,13 +34,6 @@ export const ProductsGrid = styled.div`
   gap: 1rem;
 `
 
-export const ProductGroup = styled.div`
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-`
-
 export const ProductFileGroup = styled.div`
   width: 100%;
 
