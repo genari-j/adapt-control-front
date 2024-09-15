@@ -7,10 +7,6 @@ export const getAllProducts = {
       page: String(page)
     })
 
-    // if (otherFilter) {
-    //   queryParams.append(otherFilter)
-    // }
-
     const url = `/products?${queryParams}`
     return await api.get(url)
   }
@@ -34,6 +30,7 @@ export const updateProductById = {
     formData.append('name', data.name)
     formData.append('description', data.description)
     formData.append('quantity', String(data.quantity))
+    formData.append('offer_price', String(data.offer_price))
     formData.append('price', String(data.price))
     formData.append('category_id', String(data.category_id))
     if (data.avatar && data.avatar[0] instanceof File) {

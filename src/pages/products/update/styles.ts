@@ -29,8 +29,15 @@ export const Form = styled.form`
 export const ProductsGrid = styled.div`
   width: 100%;
 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`
+
+export const ProductsGroup = styled.div`
+  width: 100%;
+
+  display: flex;
   gap: 1rem;
 `
 
@@ -50,20 +57,14 @@ export const ProductFileGroup = styled.div`
   label {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 0.3rem;
-
     cursor: pointer;
-    padding: 0.45rem 0;
 
     font-size: 0.9rem;
     font-weight: 400;
+    padding: 0.6rem 0 0.4rem 0;
+    border-radius: 0.5rem;
 
     color: ${props => props.theme['white9']};
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 
   input {

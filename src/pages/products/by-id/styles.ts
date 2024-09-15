@@ -11,23 +11,35 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px;
 
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  border: 1px solid red;
 `
 
-export const ProductsGrid = styled.div`
+export const ItemsContent = styled.div`
   width: 100%;
-
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  gap: 1rem;
 `
 
-export const ProductGroup = styled.div`
+export const ItemAvatar = styled.div`
   width: 100%;
+  max-width: 400px;
 
+  display: flex;
+
+  img {
+    width: 100%;
+
+    border-radius: 0.5rem;
+  }
+`
+
+export const ItemDescriptions = styled.div`
   display: flex;
   flex-direction: column;
 `

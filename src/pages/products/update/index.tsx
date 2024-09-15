@@ -9,6 +9,7 @@ import {
   Content,
   Form,
   ProductsGrid,
+  ProductsGroup,
   ProductFileGroup,
   ButtonsBox
 } from './styles'
@@ -39,52 +40,67 @@ export const ProductUpdate = () => {
 
           <Form onSubmit={handleSubmit(onSubmit)}>
             <ProductsGrid>
-              <TextField
-                id='name'
-                type='text'
-                label='Nome:'
-                htmlFor='name'
-                placeholder='Nome'
-                defaultValue={productById.data?.data.data.name}
-                register={register('name')}
-                error={(errors.name != null)}
-                message={errors?.name?.message}
-              />
+              <ProductsGroup>
+                <TextField
+                  id='name'
+                  type='text'
+                  label='Nome:'
+                  htmlFor='name'
+                  placeholder='Nome'
+                  defaultValue={productById.data?.data.data.name}
+                  register={register('name')}
+                  error={(errors.name != null)}
+                  message={errors?.name?.message}
+                />
 
-              <TextField
-                id='price'
-                type='number'
-                label='Valor:'
-                htmlFor='price'
-                placeholder='Valor'
-                defaultValue={productById.data?.data.data.price}
-                register={register('price')}
-                error={(errors.price != null)}
-                message={errors?.price?.message}
-              />
+                <TextField
+                  id='offer_price'
+                  type='number'
+                  label='Oferta:'
+                  htmlFor='offer_price'
+                  placeholder='Oferta'
+                  defaultValue={productById.data?.data.data.offer_price}
+                  register={register('offer_price')}
+                  {...(errors.offer_price != null && { error: true })}
+                />
 
-              <TextField
-                id='quantity'
-                type='number'
-                label='Quantidade:'
-                htmlFor='quantity'
-                placeholder='Quantidade'
-                defaultValue={productById.data?.data.data.quantity}
-                register={register('quantity')}
-                error={(errors.quantity != null)}
-                message={errors?.quantity?.message}
-              />
+                <TextField
+                  id='price'
+                  type='number'
+                  label='Valor:'
+                  htmlFor='price'
+                  placeholder='Valor'
+                  defaultValue={productById.data?.data.data.price}
+                  register={register('price')}
+                  error={(errors.price != null)}
+                  message={errors?.price?.message}
+                />
+              </ProductsGroup>
 
-              <Select
-                id='category'
-                label='Categoria:'
-                htmlFor='category'
-                defaults={productById.data?.data.data.category}
-                data={!categories.isLoading && categories.isSuccess ? categories.data?.data.data : []}
-                register={register('category_id', { valueAsNumber: true })}
-                {...(errors.category_id != null && { error: true })}
-                message={errors?.category_id?.message}
-              />
+              <ProductsGroup>
+                <TextField
+                  id='quantity'
+                  type='number'
+                  label='Quantidade:'
+                  htmlFor='quantity'
+                  placeholder='Quantidade'
+                  defaultValue={productById.data?.data.data.quantity}
+                  register={register('quantity')}
+                  error={(errors.quantity != null)}
+                  message={errors?.quantity?.message}
+                />
+
+                <Select
+                  id='category'
+                  label='Categoria:'
+                  htmlFor='category'
+                  defaults={productById.data?.data.data.category}
+                  data={!categories.isLoading && categories.isSuccess ? categories.data?.data.data : []}
+                  register={register('category_id', { valueAsNumber: true })}
+                  {...(errors.category_id != null && { error: true })}
+                  message={errors?.category_id?.message}
+                />
+              </ProductsGroup>
             </ProductsGrid>
 
             <Textarea
@@ -105,7 +121,6 @@ export const ProductUpdate = () => {
                 label='Escolher arquivo'
                 htmlFor='avatar'
                 placeholder='Avatar'
-                defaultValue={productById.data?.data.data.avatar ? productById.data?.data.data.avatar : ''}
                 register={register('avatar')}
                 error={(errors.avatar != null)}
                 message={errors?.avatar?.message}

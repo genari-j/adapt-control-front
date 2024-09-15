@@ -14,6 +14,7 @@ export const useUpdateProductMutation = (id: number, navigate: NavigateFunction)
       name: data.name,
       description: data.description,
       quantity: data.quantity,
+      offer_price: data.offer_price,
       price: data.price,
       category_id: data.category_id,
       avatar: data.avatar

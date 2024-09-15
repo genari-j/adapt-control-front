@@ -2,23 +2,10 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useGeneralStates } from '~/hooks'
-
 import { useGetCategories } from '~/api/cache/queries'
-
 import { pageTitle, dateFormatter, reduceString, categoriesHeadTB } from '~/utils'
 
-import {
-  Title,
-  Table,
-  THead,
-  TRHead,
-  TH,
-  TBody,
-  TRBody,
-  TD,
-  Bounce,
-  Pagination
-} from '~/components'
+import { Title, Table, Bounce, Pagination } from '~/components'
 
 import { CategoryCreate } from '~/pages'
 
@@ -52,25 +39,25 @@ export const CategoryList = () => {
         <TableBox>
           {categories.isLoading
             ? <LoadingBox> <Bounce bgColor='white' /> </LoadingBox>
-            : <Table>
-                <THead>
-                  <TRHead>
-                    {categoriesHeadTB.map(head => <TH key={head}>{head}</TH>)}
-                  </TRHead>
-                </THead>
-                <TBody>
+            : <Table.Table>
+                <Table.THead>
+                  <Table.TRHead>
+                    {categoriesHeadTB.map(head => <Table.TH key={head}>{head}</Table.TH>)}
+                  </Table.TRHead>
+                </Table.THead>
+                <Table.TBody>
                   {categories.data?.data.data.map((category) => {
                     return (
-                      <TRBody key={category.id}>
-                        <TD>{category.id}</TD>
-                        <TD>{category.name}</TD>
-                        <TD>{reduceString(category?.description, 40)}</TD>
-                        <TD>{dateFormatter.format(new Date(category?.created_at))}</TD>
-                      </TRBody>
+                      <Table.TRBody key={category.id}>
+                        <Table.TD>{category.id}</Table.TD>
+                        <Table.TD>{category.name}</Table.TD>
+                        <Table.TD>{reduceString(category?.description, 40)}</Table.TD>
+                        <Table.TD>{dateFormatter.format(new Date(category?.created_at))}</Table.TD>
+                      </Table.TRBody>
                     )
                   })}
-                </TBody>
-              </Table>
+                </Table.TBody>
+              </Table.Table>
           }
         </TableBox>
 

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useSession, useLogout } from '~/hooks'
-import { sidebarElements } from '~/utils'
+import { reduceString, sidebarElements } from '~/utils'
 
 import { MdLogout, ArrowBack } from '~/assets'
 
@@ -38,11 +38,10 @@ export const Sidebar = () => {
       <LogoutBox>
         <button onClick={handleLogout}><i><MdLogout /></i></button>
         <div>
-          {userInfos?.name
-            ? <Link to={`/perfil/${userInfos?.sub}`}> {userInfos?.name.split(' ')[0]} </Link>
-            : <Link to={`/perfil/${userInfos?.sub}`}> {userInfos?.name} </Link>
-          }
-          <span>{userInfos?.departments.name}</span>
+          <Link to={`/perfil/${userInfos?.sub}`}> {userInfos?.name?.split(' ')[0]} </Link>
+          <span title={userInfos?.departments.name}>
+            {reduceString(String(userInfos?.departments.name), 23)}
+          </span>
         </div>
       </LogoutBox>
     </Container>

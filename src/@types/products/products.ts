@@ -3,6 +3,7 @@ export interface Product {
   name: string
   description: string
   quantity: string
+  offer_price: string
   price: string
   active: number
   avatar: string | null
@@ -10,7 +11,7 @@ export interface Product {
     id: number
     name: string
     description: string
-    active: Boolean
+    active: boolean
     created_at: string
     updated_at: string
     deleted_at: string | null
@@ -22,7 +23,7 @@ export interface Product {
 
 export interface ProductsProps  {
   data: Product[]
-  error: Boolean
+  error: boolean
   limit: number
   currentPage: number
   pages: number

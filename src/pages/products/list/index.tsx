@@ -5,18 +5,7 @@ import { useRouting } from '~/hooks'
 import { useGetProducts } from '~/api/cache/queries'
 import { pageTitle, priceFormatter, reduceString, productsHeadTB } from '~/utils'
 
-import {
-  Title,
-  Table,
-  THead,
-  TRHead,
-  TH,
-  TBody,
-  TRBody,
-  TD,
-  Bounce,
-  Pagination
-} from '~/components'
+import { Title, Table, Bounce, Pagination } from '~/components'
 
 import { Container, Content, NewProductBox, TableBox, LoadingBox } from './styles'
 
@@ -24,8 +13,8 @@ export const ProductList = () => {
   pageTitle('Produtos')
 
   const [page, setPage] = useState(1)
-
   const products = useGetProducts(page)
+
   const { handleGoToProductDetail } = useRouting()
 
   return (
@@ -41,30 +30,31 @@ export const ProductList = () => {
         <TableBox>
           {products.isLoading
             ? <LoadingBox> <Bounce bgColor='white' /> </LoadingBox>
-            : <Table>
-                <THead>
-                  <TRHead>
-                    {productsHeadTB.map(head => <TH key={head}>{head}</TH>)}
-                  </TRHead>
-                </THead>
-                <TBody>
+            : <Table.Table>
+                <Table.THead>
+                  <Table.TRHead>
+                    {productsHeadTB.map(head => <Table.TH key={head}>{head}</Table.TH>)}
+                  </Table.TRHead>
+                </Table.THead>
+                <Table.TBody>
                   {products.data?.data.data.map((product) => {
                     return (
-                      <TRBody
+                      <Table.TRBody
                         key={product.id}
                         handleGoToDetail={() => handleGoToProductDetail(product.id)}
                         isRowClickable={true}
                       >
-                        <TD>{product.id}</TD>
-                        <TD>{reduceString(product?.name, 20)}</TD>
-                        <TD>{reduceString(product?.description, 30)}</TD>
-                        <TD>{priceFormatter.format(Number(product?.price))}</TD>
-                        <TD>{product.id}</TD>
-                      </TRBody>
+                        <Table.TD>{product.id}</Table.TD>
+                        <Table.TD>{reduceString(product?.name, 20)}</Table.TD>
+                        <Table.TD>{reduceString(product?.description, 30)}</Table.TD>
+                        <Table.TD>{priceFormatter.format(Number(product?.offer_price))}</Table.TD>
+                        <Table.TD>{priceFormatter.format(Number(product?.price))}</Table.TD>
+                        <Table.TD>{product.quantity}</Table.TD>
+                      </Table.TRBody>
                     )
                   })}
-                </TBody>
-              </Table>
+                </Table.TBody>
+              </Table.Table>
           }
         </TableBox>
 

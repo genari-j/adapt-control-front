@@ -31,8 +31,8 @@ export const Pagination = ({ totalCountPage, totalCount, page, setPage }: Pagina
       />
 
       <ButtonsBox>
-        <button onClick={handleFirstPage}> <ArrowDLeft /> </button>
-        <button onClick={handlePreviousPage}> <ArrowLeft /> </button>
+        <button onClick={handleFirstPage} disabled={page <= 1}> <ArrowDLeft /> </button>
+        <button onClick={handlePreviousPage} disabled={page <= 1}> <ArrowLeft /> </button>
 
         <p>{page} de {totalCountPage}</p>
 

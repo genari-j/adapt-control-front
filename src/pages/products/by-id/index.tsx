@@ -1,13 +1,14 @@
 import { useProductById, useRouting } from '~/hooks'
-import { pageTitle } from '~/utils'
+import { pageTitle, priceFormatter } from '~/utils'
 
-import { Title, Label, Bounce, Button } from '~/components'
+import { Title, Bounce, Button } from '~/components'
 
 import {
   Container,
   Content,
-  ProductsGrid,
-  ProductGroup,
+  ItemsContent,
+  ItemAvatar,
+  ItemDescriptions,
   ButtonsBox
 } from './styles'
 
@@ -27,39 +28,25 @@ export const ProductById = () => {
       <Container>
 
         <Content>
-          <Title content='Detalhe Produto' />
+          <ItemsContent>
+            <ItemAvatar>
+              <img
+                src={String(data?.data.data.avatar)}
+                alt={String(data?.data.data.name)}
+                title={String(data?.data.data.name)}
+              />
+            </ItemAvatar>
 
-          <ProductsGrid>
-            <ProductGroup>
-              <Label content='Nome:' />
-              <span>{data?.data.data.name}</span>
-            </ProductGroup>
-
-            <ProductGroup>
-              <Label content='Valor:' />
-              <span>{data?.data.data.price}</span>
-            </ProductGroup>
-
-            <ProductGroup>
-              <Label content='Quantidade:' />
+            <ItemDescriptions>
+              <h2>{data?.data.data.name}</h2>
+              <span>{priceFormatter.format(data?.data.data.offer_price)}</span>
+              <span>{priceFormatter.format(data?.data.data.price)}</span>
               <span>{data?.data.data.quantity}</span>
-            </ProductGroup>
-
-            <ProductGroup>
-              <Label content='Categoria:' />
               <span>{data?.data.data.category.name}</span>
-            </ProductGroup>
-          </ProductsGrid>
-
-          <ProductGroup>
-            <Label content='Descrição:' />
-            <span>{data?.data.data.description}</span>
-          </ProductGroup>
-
-          <ProductGroup>
-            <Label content='Avatar:' />
-            <img src={data?.data.data.avatar} alt={data?.data.data.avatar} title={data?.data.data.avatar} />
-          </ProductGroup>
+              <span>{data?.data.data.category.description}</span>
+              <p>{data?.data.data.description}</p>
+            </ItemDescriptions>
+          </ItemsContent>
 
           <ButtonsBox>
             <Button

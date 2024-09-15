@@ -24,6 +24,7 @@ export const productsHeadTB = [
   'Código:',
   'Nome:',
   'Descrição:',
+  'Oferta:',
   'Valor:',
   'Quantidade:'
 ]

@@ -7,7 +7,7 @@ import {
   Container,
   TextFieldBox,
   CustomTextfield,
-  Icon,
+  Icon
 } from './styles'
 
 interface TextFieldProps extends ComponentProps<'input'> {

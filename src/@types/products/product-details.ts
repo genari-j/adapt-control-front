@@ -21,6 +21,7 @@ export interface ProductByIdProps {
     name: string
     description: string
     quantity: number
+    offer_price: number
     price: number
     category: Category
     avatar: null

@@ -16,8 +16,8 @@ export const useSession = () => {
     api.defaults.headers.common.Authorization = `Bearer ${userToken}`
 
     const decodedToken = decodeAccessToken(userToken);
-    const tokenExpirationTime = decodedToken!.iat * 1000 + 12 * 60 * 60 * 1000 // 12h
-    // const tokenExpirationTime = decodedToken!.iat * 1000 + 1 * 60 * 1000 // 1m
+
+    const tokenExpirationTime = decodedToken!.exp * 1000
     const tokenExpired = tokenExpirationTime < Date.now()
 
     if (tokenExpired) {
@@ -33,8 +33,15 @@ export const useSession = () => {
   const userToken = JSON.parse(localStorage.getItem(config.LOCAL_STORAGE_TOKEN) as string)
   const userInfos = decodeAccessToken(userToken)
 
+  const adminPermission = userInfos?.profiles.code.includes('ADM')
+  const managerPermission = userInfos?.profiles.code.includes('GA')
+  const colaboratorPermission = userInfos?.profiles.code.includes('FUN')
+
   return ({
     isSignedIn,
-    userInfos
+    userInfos,
+    adminPermission,
+    managerPermission,
+    colaboratorPermission
   })
 }

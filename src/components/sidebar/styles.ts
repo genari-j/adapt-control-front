@@ -103,25 +103,6 @@ export const LogoutBox = styled.div`
   margin-top: auto;
   padding: 1rem 0.5rem 0.5rem 0.5rem;
 
-  > div {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-
-    a, span {
-      font-size: 0.9rem;
-    }
-
-    a {
-      font-weight: 600;
-      transition: .3s ease;
-
-      &:hover {
-        transform: translateX(-2px);
-      }
-    }
-  }
-
   button {
     display: flex;
     align-items: center;
@@ -143,6 +124,25 @@ export const LogoutBox = styled.div`
     &:hover {
       color: ${props => props.theme['white9']};
       background: none;
+    }
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    a, span {
+      font-size: 0.9rem;
+    }
+
+    a {
+      font-weight: 600;
+      transition: .3s ease;
+
+      &:hover {
+        transform: translateX(-2px);
+      }
     }
   }
 `

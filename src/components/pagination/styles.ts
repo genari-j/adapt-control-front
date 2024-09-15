@@ -33,6 +33,8 @@ export const ButtonsBox = styled.div`
     &:disabled {
       opacity: 0.6;
       pointer-events: none;
+
+      color: ${props => props.theme['white7']}
     }
   }
 

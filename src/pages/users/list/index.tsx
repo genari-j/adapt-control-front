@@ -4,18 +4,7 @@ import { Link } from 'react-router-dom'
 import { useGetUsers } from '~/api/cache/queries'
 import { pageTitle, usersHeadTB } from '~/utils'
 
-import {
-  Title,
-  Table,
-  THead,
-  TRHead,
-  TH,
-  TBody,
-  TRBody,
-  TD,
-  Pagination,
-  Bounce
-} from '~/components'
+import { Title, Table, Pagination, Bounce } from '~/components'
 
 import { Container, Content, NewUserBox, TableBox, LoadingBox } from './styles'
 
@@ -38,25 +27,25 @@ export const UserList = () => {
         <TableBox>
           {users.isLoading
             ? <LoadingBox> <Bounce bgColor='white' /> </LoadingBox>
-            : <Table>
-                <THead>
-                  <TRHead>
-                    {usersHeadTB.map(head => <TH key={head}>{head}</TH>)}
-                  </TRHead>
-                </THead>
-                <TBody>
+            : <Table.Table>
+                <Table.THead>
+                  <Table.TRHead>
+                    {usersHeadTB.map(head => <Table.TH key={head}>{head}</Table.TH>)}
+                  </Table.TRHead>
+                </Table.THead>
+                <Table.TBody>
                   {users.data?.data.data.map((user) => {
                     return (
-                      <TRBody key={user.id}>
-                        <TD>{user.id}</TD>
-                        <TD>{user.name}</TD>
-                        <TD>{user.department.name}</TD>
-                        <TD>{user.profile.name}</TD>
-                      </TRBody>
+                      <Table.TRBody key={user.id}>
+                        <Table.TD>{user.id}</Table.TD>
+                        <Table.TD>{user.name}</Table.TD>
+                        <Table.TD>{user.department.name}</Table.TD>
+                        <Table.TD>{user.profile.name}</Table.TD>
+                      </Table.TRBody>
                     )
                   })}
-                </TBody>
-              </Table>
+                </Table.TBody>
+              </Table.Table>
           }
         </TableBox>
 
