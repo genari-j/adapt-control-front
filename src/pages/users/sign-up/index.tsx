@@ -35,7 +35,7 @@ export const SignUp = () => {
         <FormContent>
           <TextField
             id='name'
-            type='number'
+            type='text'
             label='Nome:'
             htmlFor='name'
             placeholder='Seu nome'
@@ -57,7 +57,7 @@ export const SignUp = () => {
 
           <TextField
             id='email'
-            type='number'
+            type='email'
             label='E-mail:'
             htmlFor='email'
             placeholder='Seu e-mail'
