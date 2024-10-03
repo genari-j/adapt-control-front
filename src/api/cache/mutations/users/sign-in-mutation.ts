@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios'
-import { useMutation } from 'react-query'
+import { useMutation } from '@tanstack/react-query'
 import { NavigateFunction } from 'react-router-dom'
 
 import { api } from '~/api/config'
@@ -9,10 +9,11 @@ import { type SignInProps } from '~/@types'
 import { config, responseStatus } from '~/utils'
 
 export const useSignInMutation = (navigate: NavigateFunction) =>
-  useMutation(async (data: SignInProps) => {
-    const response = await auth.login(data)
-    return response
-  }, {
+  useMutation({
+    mutationFn: async (data: SignInProps) => {
+      const response = await auth.login(data)
+      return response
+    },
     onSuccess: (data) => {
       const userToken = data?.data.data.token
       localStorage.setItem(config.LOCAL_STORAGE_TOKEN, JSON.stringify(userToken))

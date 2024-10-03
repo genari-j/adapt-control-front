@@ -1,4 +1,4 @@
-import { useMutation } from 'react-query'
+import { useMutation } from '@tanstack/react-query'
 import { NavigateFunction } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
@@ -9,12 +9,11 @@ import { AxiosError } from 'axios'
 import { responseStatus } from '~/utils'
 
 export const useSolicitationResetMutation = (navigate: NavigateFunction) =>
-  useMutation(async (data: SolicitationResetProps) => {
-    const response = await solicitationReset.solicitationReset({
-      email: data.email
-    })
-    return response
-  }, {
+  useMutation({
+    mutationFn: async (data: SolicitationResetProps) => {
+      const response = await solicitationReset.solicitationReset(data)
+      return response
+    },
     onSuccess: () => {
       toast.success('Um Link com instruções para redefinição foi enviado ao e-mail informado.')
       const handleChangeToLogin = () => { navigate('/entrar') }
