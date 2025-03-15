@@ -17,7 +17,8 @@ export const ProductCreate = () => {
   pageTitle('Criação de Produtos')
   const { creatingProduct, onSubmit, handleSubmit, register, formState: { errors } } = useProductCreating()
 
-  const categories = useGetCategories()
+  const categoriesParams = { page: String(1), limit: String(9999)}
+  const categories = useGetCategories(categoriesParams)
 
   return (
     <Container>
@@ -86,8 +87,8 @@ export const ProductCreate = () => {
         <ButtonBox>
           <Button
             type='submit'
-            disabled={creatingProduct.isLoading}
-            buttonContent={creatingProduct.isLoading ? <Bounce bgColor='white' /> : 'Cadastrar'}
+            disabled={creatingProduct.isPending}
+            buttonContent={creatingProduct.isPending ? <Bounce bgColor='white' /> : 'Cadastrar'}
           />
         </ButtonBox>
       </Form>
