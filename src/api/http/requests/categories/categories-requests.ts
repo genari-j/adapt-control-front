@@ -2,17 +2,12 @@ import { api } from '~/api/config'
 import { type CategoryProps } from '~/@types'
 
 export const getAllCategories = {
-  listAll: async (page = 1, limit?: number) => {
-    // let queryParams
+  listAll: (params: Record<string, string> = {}) => {
+		const queryParams = new URLSearchParams(params)
 
-    const queryParams = new URLSearchParams({
-      page: String(page),
-      limit: String(limit)
-    })
-
-    const url = `/categories?${queryParams}`
-    return await api.get(url)
-  }
+		const url = `/categories?${queryParams.toString()}`
+		return api.get(url)
+	},
 }
 
 export const createCategory = {
