@@ -50,8 +50,8 @@ export const SignIn = () => {
 
         <Button
           type='submit'
-          disabled={signIn.isLoading}
-          buttonContent={signIn.isLoading ? <Bounce bgColor='white' /> : 'Entrar'}
+          disabled={signIn.isPending}
+          buttonContent={signIn.isPending ? <Bounce bgColor='white' /> : 'Entrar'}
         />
 
         <ForgotPasswordBox>
